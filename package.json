@@ -1,0 +1,22 @@
+{
+  "name": "ts-session",
+  "version": "0.0.0",
+  "description": "A client-side web session controller for AngularJS",
+  "main": "ts-session.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/termosa/ts-session.git"
+  },
+  "keywords": [
+    "angular",
+    "session",
+    "auth",
+    "storage"
+  ],
+  "author": "Stanislav Termosa <termosa.stanislav@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/termosa/ts-session/issues"
+  },
+  "homepage": "https://github.com/termosa/ts-session#readme"
+}
