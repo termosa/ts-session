@@ -143,9 +143,11 @@
         safeMode: function(safe) {
           safeMode = safe;
         },
-        $get: function() {
-          return buildSession(storage, safeMode);
-        }
+        $get: ["$injector", function($injector) {
+          var storageService = typeof storage === "string"
+            ? $injector.get(storage) : storage;
+          return buildSession(storageService, safeMode);
+        }]
       };
     });
 
