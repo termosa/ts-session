@@ -80,7 +80,7 @@
       };
 
       session.get = function(key) {
-        if (!key) return sessions[id];
+        if (typeof key === "undefined") return sessions[id];
         return sessions[id][key];
       };
 
