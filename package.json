@@ -1,6 +1,6 @@
 {
   "name": "ts-session",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A client-side web session controller for AngularJS",
   "main": "ts-session.js",
   "repository": {

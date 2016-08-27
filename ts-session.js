@@ -111,6 +111,9 @@
     }
 
     Session.get = function(id) {
+      if (safe && typeof sessions[id] === "undefined") {
+        throw new Error("Session with the id = '" + id + "' does not exist");
+      }
       return withoutSafe(function() {
         return Session(id);
       });
