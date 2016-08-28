@@ -95,6 +95,29 @@ module
 ]);
 ```
 
+### tsSession.has(&lt;id>)
+
+Checks whether there is a session specified by ```id``` and returns ```true``` or ```false```.
+
+``` js
+module
+.factory('userSession', [
+  '$window',
+  'tsSession',
+  function($window, Session) {
+    var Date = $window.Date;
+
+    if (Session.has('user')) {
+      return Session.get('user');
+    }
+
+    return Session.create('user', {
+      session_created: Date.now()
+    });
+  }
+]);
+```
+
 ### tsSession.get(&lt;id>)
 
 Returns session if it exists. Otherwise returns ```undefined``` or throws error if in **safe** mode.
@@ -186,14 +209,17 @@ module.run([
 
 Stores data. If ```key``` is specified it creates a property with the name defined by ```key``` and sets it to the value of second argument. If ```key``` is object **set** will copy all of the properties to the session.
 
+Returns session instance, so you can chain execution of session methods;
+
 ``` js
 module.run([
   'tsSession',
   function(Session) {
     var session = new Session('user');
-    session.set({ id: 1 });
-    session.set('name', 'John');
-    session.get(); // returns { id: 1, name: "John" }
+    session
+      .set({ id: 1 })
+      .set('name', 'John')
+      .get(); // returns { id: 1, name: "John" }
   }
 ]);
 ```
@@ -201,6 +227,8 @@ module.run([
 ### session.del(&lt;key>)
 
 Deletes the property specified by ```key```.
+
+Returns session instance, so you can chain execution of session methods;
 
 ``` js
 module.run([
@@ -217,6 +245,8 @@ module.run([
 
 Drops all of the data in the session.
 
+Returns session instance, so you can chain execution of session methods;
+
 ``` js
 module.run([
   'tsSession',
@@ -227,3 +257,4 @@ module.run([
   }
 ]);
 ```
+

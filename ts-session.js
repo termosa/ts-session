@@ -110,8 +110,12 @@
       return session;
     }
 
+    Session.has = function(id) {
+      return typeof sessions[id] !== "undefined";
+    };
+
     Session.get = function(id) {
-      if (safe && typeof sessions[id] === "undefined") {
+      if (safe && !Session.has(id)) {
         throw new Error("Session with the id = '" + id + "' does not exist");
       }
       return withoutSafe(function() {
